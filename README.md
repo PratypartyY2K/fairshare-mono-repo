@@ -2,19 +2,19 @@
 
 A comprehensive expense tracking and settlement system designed for groups to manage shared costs fairly and efficiently. This mono-repository contains both the backend API and frontend web application as Git submodules.
 
-## 🎯 Overview
+## Overview
 
 **Fairshare** is a full-stack application that helps groups track shared expenses, calculate fair splits, and determine optimal settlement transfers. Whether you're sharing an apartment, traveling with friends, or managing group activities, Fairshare makes it easy to track who owes what and minimize the number of payments needed to settle up.
 
 ### Key Features
-- 📊 **Smart Expense Tracking**: Support for multiple split modes (equal, exact amounts, percentages, weighted shares)
-- 💰 **Intelligent Settlements**: Minimizes the number of transfers needed to settle group balances
-- 📝 **Comprehensive Audit Trail**: Full history of all expenses, edits, and confirmed transfers
-- 🔍 **Detailed Explanations**: See exactly how ledger balances are calculated
-- 👥 **Multi-Group Support**: Manage expenses across different groups simultaneously
-- 🔄 **Idempotent Operations**: Prevent duplicate entries with built-in idempotency support
+- **Smart Expense Tracking**: Support for multiple split modes (equal, exact amounts, percentages, weighted shares)
+- **Intelligent Settlements**: Minimizes the number of transfers needed to settle group balances
+- **Comprehensive Audit Trail**: Full history of all expenses, edits, and confirmed transfers
+- **Detailed Explanations**: See exactly how ledger balances are calculated
+- **Multi-Group Support**: Manage expenses across different groups simultaneously
+- **Idempotent Operations**: Prevent duplicate entries with built-in idempotency support
 
-## 🏗️ Repository Structure
+## Repository Structure
 
 This is a mono-repository that uses Git submodules to organize the backend and frontend:
 
@@ -25,7 +25,7 @@ fairshare-mono-repo/
 └── README.md             # This file
 ```
 
-## 📦 Submodules
+## Submodules
 
 ### Backend (fairshare-backend)
 **Repository**: https://github.com/PratypartyY2K/fairshare-backend.git
@@ -169,7 +169,7 @@ npm run lint
 
 **Prerequisites**: Node.js 18+, Running backend API
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Initial Setup
 
@@ -225,7 +225,7 @@ cd fairshare-backend && mvn spring-boot:run
 cd fairshare-frontend && npm run dev
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Backend Tests
 ```bash
@@ -246,13 +246,13 @@ cd fairshare-frontend
 npm run lint
 ```
 
-## 📚 Documentation
+## Documentation
 
 - **Backend API Documentation**: Access Swagger UI at http://localhost:8080/swagger when the backend is running
 - **Backend README**: See `fairshare-backend/README.md` for detailed API documentation
 - **Frontend README**: See `fairshare-frontend/README.md` for detailed component and feature documentation
 
-## 🔄 Updating Submodules
+## Updating Submodules
 
 To update submodules to their latest versions:
 
@@ -269,7 +269,7 @@ git add .
 git commit -m "Update submodules to latest versions"
 ```
 
-## 🛠️ Technology Summary
+## Technology Summary
 
 | Component | Languages | Frameworks | Key Libraries |
 |-----------|-----------|------------|---------------|
@@ -278,13 +278,13 @@ git commit -m "Update submodules to latest versions"
 | **Build Tools** | - | Maven 3, npm | - |
 | **Database** | SQL | PostgreSQL | H2 (testing) |
 
-## 📋 Requirements
+## Requirements
 
 - **Backend**: Java 21, Maven 3, PostgreSQL
 - **Frontend**: Node.js 18+, npm
 - **Both**: Git (for version control)
 
-## 🤝 Contributing
+## Contributing
 
 When contributing to this mono-repository:
 
@@ -293,11 +293,11 @@ When contributing to this mono-repository:
 3. Ensure both backend and frontend remain compatible
 4. Test the integration between services
 
-## 📄 License
+## License
 
 Please refer to the individual submodule repositories for license information.
 
-## 🔗 Related Links
+## Related Links
 
 - **Backend Repository**: https://github.com/PratypartyY2K/fairshare-backend
 - **Frontend Repository**: https://github.com/PratypartyY2K/fairshare-frontend
