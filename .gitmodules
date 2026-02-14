@@ -1,3 +1,6 @@
 [submodule "fairshare-frontend"]
 	path = fairshare-frontend
 	url = https://github.com/PratypartyY2K/fairshare-frontend.git
+[submodule "fairshare-backend"]
+	path = fairshare-backend
+	url = https://github.com/PratypartyY2K/fairshare-backend.git
