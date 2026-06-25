@@ -1,33 +1,33 @@
 # Fairshare
 
-Fairshare is an explainable expense ledger for groups, built around transparency, determinism, and auditability.
+Fairshare is a group expense tracker built around a real ledger.
 
-Most expense-sharing apps stop at balances. Fairshare is designed to answer the harder questions: why a balance exists, which events produced it, and how it changed over time. The project treats shared expenses as a ledgered system rather than a lightweight calculator.
+Most expense apps stop at "Alice owes Bob $12." Fairshare keeps the history that produced that number: who paid, how the split was computed, what got edited, and which transfers were confirmed later.
 
 ## What Makes It Different
 
-- Explainable balances: users can inspect the expenses and transfers that contribute to a net position.
-- Auditability: expense lifecycle changes and confirmed transfers are preserved as events.
-- Deterministic accounting: money values use explicit precision and stable rounding behavior.
-- Idempotent operations: expense creation and settlement confirmation are safe to retry without duplicate side effects.
+- Explainable balances: a user's position can be traced back to expenses, shares, and confirmed transfers.
+- Auditability: edits and voids are recorded as events instead of disappearing into the latest state.
+- Deterministic accounting: amounts are rounded once, stored at scale 2, and leftover cents are assigned predictably.
+- Idempotent operations: expense creation and settlement confirmation can be retried without double-applying writes.
 
 ## Core Concepts
 
 ### Ledger-First Accounting
 
-Balances are derived from recorded state transitions, not stored as opaque totals. Expenses, updates, voids, and confirmed transfers all contribute to the current ledger.
+Balances are derived from recorded changes, not stored as a free-floating total. Expenses, updates, voids, and confirmed transfers all feed the ledger.
 
 ### Explainability
 
-Each balance can be broken down into its contributing expenses, participant shares, and transfers. The system is intended to make outcomes inspectable, not just correct.
+Each balance can be broken down into the expense rows and transfers behind it. That matters when a split looks wrong and someone needs to debug the history instead of trusting the UI.
 
 ### Event History
 
-Mutations produce auditable history such as `ExpenseCreated`, `ExpenseUpdated`, `ExpenseVoided`, and `TransferConfirmed`. That keeps the model useful for debugging, trust, and future analytics.
+Writes produce events like `ExpenseCreated`, `ExpenseUpdated`, `ExpenseVoided`, and `TransferConfirmed`. I kept the event model narrow on purpose: enough history to debug state changes without turning the app into a full event-sourced system.
 
 ### Deterministic Money Handling
 
-Amounts are normalized to fixed precision, rounding behavior is explicit, and leftover cents are distributed predictably. The goal is to avoid hidden drift and inconsistent recomputation.
+Amounts are normalized to fixed precision, rounding is explicit, and leftover cents are distributed in a stable order. That avoids the usual "why did this recompute to a different cent value?" problem.
 
 ## Repository Structure
 
@@ -66,7 +66,7 @@ cd fairshare-backend
 mvn spring-boot:run
 ```
 
-The backend runs on `http://localhost:8080`. Swagger UI is available at `http://localhost:8080/swagger`.
+The backend runs on `http://localhost:8080`. Swagger UI is at `http://localhost:8080/swagger`.
 
 ### 3. Start the frontend
 
@@ -79,7 +79,7 @@ npm run dev
 
 The frontend runs on `http://localhost:3000`.
 
-If you prefer to proxy requests through Next.js rewrites instead of calling the backend directly from the browser, use:
+If you want the frontend to proxy requests through Next.js instead of calling the backend directly from the browser, use:
 
 ```bash
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
@@ -99,11 +99,11 @@ BACKEND_URL=http://localhost:8080
 
 - Create, edit, and delete expenses
 - Support equal, exact amount, percentage, and share-based split modes
-- Persist split details with deterministic rounding behavior
+- Store split results with fixed rounding rules so the same expense does not drift across recomputations
 
 ### Settlements And Ledger
 
-- Compute suggested settlements from the current ledger
+- Compute suggested settlements from current ledger balances
 - Confirm settlements with idempotency support
 - View current balances and owes relationships
 
@@ -115,9 +115,9 @@ BACKEND_URL=http://localhost:8080
 
 ## Authentication Status
 
-The backend supports header-based actor identity via `X-User-Id`. In local development, auth is currently optional so the main flows are easy to run without extra setup.
+The backend supports header-based actor identity via `X-User-Id`. In local development, auth is optional so the main flows work without bootstrapping a real identity layer.
 
-Production-style user authentication is not implemented yet. Planned direction includes passwordless login, invite-based onboarding, and guest-to-user account claiming.
+Real user auth is not implemented yet. The planned path is passwordless login, invite links, and guest-to-user claiming, but none of that is in this repo today.
 
 ## Design Principles
 
@@ -145,4 +145,4 @@ npm run build -- --webpack
 
 ## Notes
 
-The repository still includes `.gitmodules` because the project was originally split across separate repos. The codebase is organized and documented as a single portfolio project, but the submodule metadata has not been removed yet.
+The repo still includes `.gitmodules` because the project started as separate backend and frontend repos. The code is treated like one project now, but the submodule metadata is still there.
