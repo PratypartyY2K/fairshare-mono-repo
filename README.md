@@ -1,5 +1,7 @@
 # Fairshare
 
+<img width="1266" height="799" alt="image" src="https://github.com/user-attachments/assets/74a9567d-6c2e-4559-aac6-72df13fa296a" />
+
 Fairshare is a group expense tracker built around a real ledger.
 
 Most expense apps stop at "Alice owes Bob $12." Fairshare keeps the history that produced that number: who paid, how the split was computed, what got edited, and which transfers were confirmed later.
@@ -100,6 +102,7 @@ BACKEND_URL=http://localhost:8080
 - Create, edit, and delete expenses
 - Support equal, exact amount, percentage, and share-based split modes
 - Store split results with fixed rounding rules so the same expense does not drift across recomputations
+<img width="1266" height="799" alt="image" src="https://github.com/user-attachments/assets/c8948133-5bd2-44dd-85d1-f30d53a9e7c4" />
 
 ### Settlements And Ledger
 
@@ -107,11 +110,16 @@ BACKEND_URL=http://localhost:8080
 - Confirm settlements with idempotency support
 - View current balances and owes relationships
 
+  <img width="1183" height="799" alt="image" src="https://github.com/user-attachments/assets/5569b278-3ace-4baf-becd-358bf26f6228" />
+
+
 ### Explainability And History
 
 - Inspect per-user ledger explanations
 - View confirmed transfer history
 - View expense event history and lifecycle changes
+<img width="1183" height="793" alt="image" src="https://github.com/user-attachments/assets/19ada6de-7c79-4174-b399-af6bceff3ee4" />
+<img width="1183" height="740" alt="image" src="https://github.com/user-attachments/assets/a239feb5-960c-4ed8-b3b6-defa502fe889" />
 
 ## Authentication Status
 
